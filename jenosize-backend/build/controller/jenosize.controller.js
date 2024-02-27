@@ -97,21 +97,21 @@ const loginEmail = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         const user = auth.currentUser;
         if (user === null) {
             const userCredential = yield (0, auth_1.signInWithEmailAndPassword)(auth, email, password);
-            if (userCredential.user) {
-                res.status(200).json({
-                    apiKey: (yield userCredential.user.getIdTokenResult()).token,
-                });
-            }
-            res.status(200).json({ message: "not user" });
+            const user = userCredential.user;
+            const uid = user.uid;
+            const jwtToken = (0, jwt_1.generateJWT)(uid);
+            res.status(200).json({ apiKey: jwtToken });
         }
         else {
-            res.status(200).json({ apiKey: (yield user.getIdTokenResult()).token });
+            const uid = yield user.uid;
+            const jwtToken = (0, jwt_1.generateJWT)(uid);
+            res.status(200).json({ apiKey: jwtToken });
         }
     }
     catch (error) {
         console.error("Error logging in with Google:", error);
         if (error.user === undefined) {
-            res.status(200).json({ message: "User undefined" });
+            res.status(400).json({ message: "Sign-in failed", error: error.message });
         }
         res.status(500).json({ message: "Internal server error" });
     }

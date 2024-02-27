@@ -22,3 +22,21 @@ FRONTEND TEST
 [x] สราง Top bar, Body และ footer ใชในทกๆเพจ รวมถง element ตางๆโดยทการแยกเปน component อยางชดเจน
 
 [x] สรางหนาคนหาขอมลรานอาหาร โดยใชขอมล API จาก Place search|PlaceAPI (by Google) ผลลพธ ทไดตองเปน JSON เทานน
+
+********************************************
+
+Setup Project
+
+Now using node v18.x.x
+
+- cd jenosize-backend
+- แก้ไขไฟล์ .env.example => .env
+- เพิ่ม GOOGLE_PLACES_API_KEY=xxxx // 
+- cd src/firebaseConfig.ts set config firebase
+- npm i 
+- npm run exec || npm run dev
+
+- cd jenosize-place-frontend
+- แก้ไขไฟล์ .env.example => .env
+- npm i 
+- npm run dev

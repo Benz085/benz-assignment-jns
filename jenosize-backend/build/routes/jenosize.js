@@ -32,7 +32,9 @@ const JenosizeController = __importStar(require("../controller/jenosize.controll
 const passportJWT_1 = __importDefault(require("../middleware/passportJWT"));
 exports.jenosizeRouter = express_1.default.Router();
 /* GET users listing. */
-exports.jenosizeRouter.get("/", passportJWT_1.default.authenticate("jwt", { session: false }), JenosizeController.index);
+exports.jenosizeRouter.get("/", 
+// passportJWT.authenticate("jwt", { session: false }),
+JenosizeController.index);
 exports.jenosizeRouter.get("/searchPlaces", passportJWT_1.default.authenticate("jwt", { session: false }), JenosizeController.searchPlaces);
 exports.jenosizeRouter.post("/game24", passportJWT_1.default.authenticate("jwt", { session: false }), JenosizeController.game24);
 exports.jenosizeRouter.post("/login/google", JenosizeController.loginGoogle);

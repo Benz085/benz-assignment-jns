@@ -8,9 +8,6 @@ const http_1 = __importDefault(require("http"));
 const config_1 = require("./config");
 const debug = require("debug")("jenosize-backene:server");
 /**
- * Error Handler. Provides full stack - remove for production
- */
-/**
  * Start Express server.
  */
 // Express configuration
@@ -70,13 +67,5 @@ function onListening() {
     let bind = typeof addr === "string" ? "pipe " + addr : "port " + (addr === null || addr === void 0 ? void 0 : addr.port);
     debug("Listening on " + bind);
 }
-// const server = app.listen(app.get("port"), () => {
-//     console.log(
-//         "  App is running at http://localhost:%d in %s mode",
-//         app.get("port"),
-//         app.get("env")
-//     );
-//     console.log("  Press CTRL-C to stop\n");
-// });
 exports.default = server;
 //# sourceMappingURL=server.js.map
